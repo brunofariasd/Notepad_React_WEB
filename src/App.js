@@ -27,7 +27,7 @@ class App extends Component {
             categorias={this.categorias}
           />
           <ListaDeNotas 
-            notas={this.notas.notas} 
+            notas={this.notas} 
             deletarNota={this.notas.deletarNota.bind(this.notas)} 
           />
         </main>

@@ -9,17 +9,25 @@ export default class arrayNotas{
         this._inscritos.push(func);
     }
 
-    notificar(){
-        this._inscritos.forEach(func => func())
+    desinscrever(func){
+        this._inscritos = this._inscritos.filter(f => f !== func);
+    }
+
+    _notificar(){
+        this._inscritos.forEach(func => 
+            func(this.notas)
+        )
     }
 
     criarNota(titulo, nota, categoria) {
-        const novaNota = new Nota(titulo, nota, categoria)
-        this.notas.push(novaNota)
+        const novaNota = new Nota(titulo, nota, categoria);
+        this.notas.push(novaNota);
+        this._notificar();
     }
 
     deletarNota(index) {
         this.notas.splice(index, 1);
+        this._notificar();
     }
 }
 
